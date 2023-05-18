@@ -2,28 +2,27 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
     <title>{{ title }}</title>
-    <link type="text/css" href="{% static 'dvlink/css/style.css' %}" rel="stylesheet"/>
+    <link type="text/css" href="{% static 'dvlink/css/style.css' %}" rel="stylesheet" />
+    <meta charset= "UTF-8">
 </head>
 <body>
 <!--Блок шапки начало-->
 {% block header %}
 <div class="header">
-  <div class="logo_header">
-      <a href="#"><img src="{% static 'dvlink/img/logo.png' %}"></a>
-  </div>
-    <div class="text_menu">
-        <p><a href="#"> О компании</a></p>
-        <p><a href="#"> Отправить заявку</a></p>
-        <p><a href="#"> Контакты</a></p>
-    </div>
-    <div class="icon">
-        <a href="#"><img src="{% static 'dvlink/img/icon.png' %}"></a>
-    </div>
-</div>
+        <div class="logo_header">
+            <a href="#"><img src="{% static 'dvlink/img/logo.png' %}"></a>
+        </div>
+          <div class="text_menu">
+              <a href="#"> Связаться с нами</a>
+              <a href="#"> Контакты</a>
+          </div>
+          <div class="icon">
+              <a href="#"><img src="{% static 'dvlink/img/icon.png' %}"></a>
+          </div>
+      </div>
 {% endblock header %}
-<!--Блок конец начало-->
+<!--Блок шапки конец-->
 
 <!--Блок контента начало-->
 {% block content %}
@@ -34,13 +33,13 @@
 <!--Блок подвала начало-->
 {% block folder %}
 <div class="folder">
-    <div class="logo_folder">
-      <img src="{% static 'dvlink/img/logo.png' %}">
-  </div>
-    <div class="text_folder">
-        <p>Текст копирайт</p>
-    </div>
-</div>
+            <div class="logo">
+                 <img src="{% static 'dvlink/img/logo.png' %}">
+            </div>
+            <div class="text_copirate">
+                <p>© 2014 - 2023 | ООО «ДВ-Линк»</p>
+            </div>
+        </div>
 {% endblock folder%}
 <!--Блок подвала конец-->
 </body>

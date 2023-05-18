@@ -11,11 +11,11 @@
 {% block header %}
 <div class="header">
         <div class="logo_header">
-            <a href="#"><img src="{% static 'dvlink/img/logo.png' %}"></a>
+            <a href="{% url 'home' %}"><img src="{% static 'dvlink/img/logo.png' %}"></a>
         </div>
           <div class="text_menu">
-              <a href="#"> Связаться с нами</a>
-              <a href="#"> Контакты</a>
+              <a href="#form"> Связаться с нами</a>
+              <a href="#contacts"> Контакты</a>
           </div>
           <div class="icon">
               <a href="#"><img src="{% static 'dvlink/img/icon.png' %}"></a>
@@ -34,7 +34,7 @@
 {% block folder %}
 <div class="folder">
             <div class="logo">
-                 <img src="{% static 'dvlink/img/logo.png' %}">
+                 <a href="{% url 'home' %}"><img src="{% static 'dvlink/img/logo.png' %}"></a>
             </div>
             <div class="text_copirate">
                 <p>© 2014 - 2023 | ООО «ДВ-Линк»</p>

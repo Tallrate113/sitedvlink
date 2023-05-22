@@ -7,4 +7,5 @@ def index(request):
     return render(request, 'dvlink/index.html', {'title': 'Главная страница'})
 
 def account(request):
-    return render(request, 'dvlink/account.html', {'title': 'Аккаунт'})
+    posts = Applications.objects.all()
+    return render(request, 'dvlink/account.html', {'posts': posts, 'title': 'Аккаунт'})

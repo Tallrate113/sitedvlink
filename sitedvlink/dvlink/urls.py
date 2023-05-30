@@ -7,6 +7,7 @@ from .views import *
 urlpatterns = [
     path('', index, name='home'),
     path('account/', account, name='account'),
+    path('signin/', signin, name='signin'),
 ]
 
 if settings.DEBUG:

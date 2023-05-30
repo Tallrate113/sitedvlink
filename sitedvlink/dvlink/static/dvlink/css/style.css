@@ -77,7 +77,7 @@ body{
    margin-top: 31px;
 }
 
-.form{
+form{
     display: flex;
     justify-content: center;
     margin-top: 160px;
@@ -87,6 +87,14 @@ body{
     margin-left: 504px;
     border-radius: 150px;
     margin-bottom: 160px;
+}
+
+.error{
+   color:#7B0000;
+   font-size:35px;
+   font-family: 'Montserrat-Medium';
+   text-align: center;
+   text-decoration: none;
 }
 
 input{
@@ -123,7 +131,7 @@ textarea{
     color: #434343;
 }
 
-.field_number_phone input[type="tel"]{
+.field_number_phone input[type="text"]{
     font-family: 'Montserrat-Regular';
     background: #ffffff;
     border-radius: 20px;
@@ -207,15 +215,15 @@ input[type=checkbox] {
                     }
  .checkbox{
     margin-bottom: 22px;
- } 
-                
+ }
+
 
 .button{
     display: flex;
     justify-content: center;
 }
 
-input[type="submit"]{
+button{
     width: 296px;
     height: 73px;
     background-color: #353535;
@@ -225,7 +233,6 @@ input[type="submit"]{
     font-family: 'Montserrat-Bold';
     border-radius: 10px;
     text-align: center;
-    padding-right: 64px;
 }
 
 .contacts{

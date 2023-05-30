@@ -7,25 +7,32 @@
             <p class="text_information_2">Поставляем и монтируем оборудование</p>
         </div>
       </div>
-<form>
-        <div class="form" id="form">
-        <div class="field"><div class="space"></div>
+    <div class="error">
+        {{ form.non_field_errors }}
+    </div>
+<form action="{% url 'home' %}" method="post">
+    {% csrf_token %}
+    <div class="field"><div class="space"></div>
         <div class="field_fio" data-tooltip="Введите ваше ФИО">
-            <input type="text" required placeholder="ФИО">
-        </div><div class="space"></div>
+            {{ form.field_fio }}
+        </div>
+        <div class="space"></div>
         <div class="field_strok">
         <div class="field_number_phone" data-tooltip="Введите ваш номер телефона, Пример: +7 (***) ***-**-**">
-            <input type="tel" required placeholder="Телефон" onkeypress="return/[0-9+( )-]/i.test(event.key)" pattern="(?=.*[0-9]).{18}"/>
-        </div><div class="space"></div>
-        <div class="field_email" data-tooltip="Введите ваш почтовый адрес">
-            <input type="email" required placeholder="E-mail">
+            {{ form.field_number_phone }}
         </div>
-        </div><div class="space"></div>
+            <div class="space"></div>
+        <div class="field_email" data-tooltip="Введите ваш почтовый адрес">
+            {{ form.field_email }}
+        </div>
+        </div>
+        <div class="space"></div>
         <div class="field_organisation_name" data-tooltip="Введите название вашей организации">
-            <input type="text" required placeholder="Название организации">
-        </div><div class="space"></div>
+            {{ form.field_organisation_name }}
+        </div>
+        <div class="space"></div>
         <div class="field_text_appeal" data-tooltip="Напишите текст обращения">
-            <textarea required placeholder="Текст обращения"></textarea>
+            {{ form.field_text_appeal }}
         </div>
         <div class="checkbox">
             <input id="check1" type="checkbox" name="check" required value="check1">
@@ -33,11 +40,10 @@
                 на обработку моих персональных данных</p></label>
         </div>
         <div class="button">
-            <input type="submit" value="Отправить" />
+            <button type="submit"> Отправить </button>
         </div>
         </div>
-        </div>
-    </form>
+</form>
 
        <div class="contacts" id="contacts">
             <div class="maps">

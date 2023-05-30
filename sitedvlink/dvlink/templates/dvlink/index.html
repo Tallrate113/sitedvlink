@@ -7,39 +7,41 @@
             <p class="text_information_2">Поставляем и монтируем оборудование</p>
         </div>
       </div>
-<div class="form" id="form">
-        <div class="field">
-        <div class="field_fio">
-            <input type="text" placeholder="ФИО">
-        </div>
+<form>
+        <div class="form" id="form">
+        <div class="field"><div class="space"></div>
+        <div class="field_fio" data-tooltip="Введите ваше ФИО">
+            <input type="text" required placeholder="ФИО">
+        </div><div class="space"></div>
         <div class="field_strok">
-        <div class="field_number_phone">
-            <input type="text" placeholder="Телефон">
+        <div class="field_number_phone" data-tooltip="Введите ваш номер телефона, Пример: +7 (***) ***-**-**">
+            <input type="tel" required placeholder="Телефон" onkeypress="return/[0-9+( )-]/i.test(event.key)" pattern="(?=.*[0-9]).{18}"/>
+        </div><div class="space"></div>
+        <div class="field_email" data-tooltip="Введите ваш почтовый адрес">
+            <input type="email" required placeholder="E-mail">
         </div>
-        <div class="field_email">
-            <input type="text" placeholder="E-mail">
-        </div>
-        </div>
-        <div class="field_organisation_name">
-            <input type="text" placeholder="Название организации">
-        </div>
-        <div class="field_text_appeal">
-            <textarea placeholder="Текст обращения"></textarea>
+        </div><div class="space"></div>
+        <div class="field_organisation_name" data-tooltip="Введите название вашей организации">
+            <input type="text" required placeholder="Название организации">
+        </div><div class="space"></div>
+        <div class="field_text_appeal" data-tooltip="Напишите текст обращения">
+            <textarea required placeholder="Текст обращения"></textarea>
         </div>
         <div class="checkbox">
-            <input id="check1" type="checkbox" name="check" value="check1">
+            <input id="check1" type="checkbox" name="check" required value="check1">
             <label for="check1"><p>Я согласен с политикой конфиденциальности и<br>
                 на обработку моих персональных данных</p></label>
         </div>
         <div class="button">
-            <button type="submit"><p>Отправить</p></button>
+            <input type="submit" value="Отправить" />
         </div>
         </div>
         </div>
+    </form>
 
-        <div class="contacts" id="contacts">
+       <div class="contacts" id="contacts">
             <div class="maps">
-                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae063cdc4a2968617fe376b98e2ea17ae0934f04be14203a6fe1346ad585cf4e8&amp;width=1680&amp;height=1000&amp;lang=ru_RU&amp;scroll=true"></script>
+                <script type="text/javascript" charset="utf-8" async src="https://api-maps.yandex.ru/services/constructor/1.0/js/?um=constructor%3Ae063cdc4a2968617fe376b98e2ea17ae0934f04be14203a6fe1346ad585cf4e8&amp;width=100%&amp;height=1000&amp;lang=ru_RU&amp;scroll=true"></script>
             </div>
             <div class="inf_contacts">
                 <div class="bgcircle">
@@ -52,8 +54,8 @@
                             <p>+7 (4212) 47-99-07</p>
                             <a href="info@dv-link.su">info@dv-link.su</a>
                         </div>
-                    </div>
                 </div>
+            </div>
         </div>
 {% endblock %}
 

@@ -12,16 +12,13 @@ class StatusAdmin(admin.ModelAdmin):
     search_fields = ('name',)
 
 class EmployeeAdmin(admin.ModelAdmin):
-    list_display = ('id', 'name', 'pos')
-    search_fields = ('name', )
-    list_filter = ('name', 'pos')
-
-class PositionAdmin(admin.ModelAdmin):
     list_display = ('id', 'name')
-    search_fields = ('name',)
+    search_fields = ('name', )
+    list_filter = ('name', )
+
+
 
 
 admin.site.register(Applications, ApplicationsAdmin)
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Employee, EmployeeAdmin)
-admin.site.register(Position, PositionAdmin)

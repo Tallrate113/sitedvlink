@@ -29,18 +29,19 @@
 
 {% endblock %}
 <!--Блок контента конец-->
-
+</body>
 <!--Блок подвала начало-->
 {% block folder %}
-<div class="folder">
-            <div class="logo">
-                 <a href="{% url 'home' %}"><img src="{% static 'dvlink/img/logo.png' %}"></a>
-            </div>
-            <div class="text_copirate">
-                <p>© 2014 - 2023 | ООО «ДВ-Линк»</p>
-            </div>
+<footer>
+    <div class="folder">
+        <div class="logo">
+            <a href="{% url 'home' %}"><img src="{% static 'dvlink/img/logo.png' %}"></a>
         </div>
+        <div class="text_copirate">
+            <p>© 2014 - 2023 | ООО «ДВ-Линк»</p>
+        </div>
+    </div>
+</footer>
 {% endblock folder%}
 <!--Блок подвала конец-->
-</body>
 </html>

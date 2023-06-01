@@ -8,6 +8,8 @@ urlpatterns = [
     path('', index, name='home'),
     path('account/', account, name='account'),
     path('signin/', signin, name='signin'),
+    path('api/v1/applist/', ApplicationsAPIView.as_view()),
+    path('api/v1/applist/<int:pk>/', ApplicationsAPIView.as_view())
 ]
 
 if settings.DEBUG:

@@ -1,9 +1,10 @@
 from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
-from rest_framework import generics
+from rest_framework import generics, viewsets, mixins
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import GenericViewSet
 
 from .forms import *
 from .models import *
@@ -31,45 +32,30 @@ def signin(request):
     posts = Applications.objects.all()
     return render(request, 'dvlink/signinpage.html', {'posts': posts, 'title': 'Регистрация'})
 
-class ApplicationsAPIView(APIView):
-    def get(self, request):
-        A = Applications.objects.all()
-        return Response({'posts': ApplicationsSerializer(A, many=True).data})
 
-    def post(self, request):
-        serializer = ApplicationsSerializer(data=request.data)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-
-        return Response({'post': serializer.data})
-
-    def put(self, request, *args, **kwargs):
-        pk=kwargs.get("pk", None)
-        if not pk:
-            return Response({"error": "Method PUT not allowed"})
-
-        try:
-            instance = Applications.objects.get(pk=pk)
-        except:
-            return Response({"error": "Objects does not exists"})
-
-        serializer = ApplicationsSerializer(data=request.data, instance=instance)
-        serializer.is_valid(raise_exception=True)
-        serializer.save()
-        return Response({"post": serializer.data})
+class ApplicationsViewSet(mixins.CreateModelMixin,
+                          mixins.RetrieveModelMixin,
+                          mixins.UpdateModelMixin,
+                          mixins.DestroyModelMixin,
+                          mixins.ListModelMixin,
+                          GenericViewSet):
+    queryset = Applications.objects.all()
+    serializer_class = ApplicationsSerializer
 
 
-    def delete(self, request, *args, **kwargs):
-        pk = kwargs.get("pk", None)
-        if not pk:
-            return Response({"error": "Method DELETE not allowed"})
-        try:
-            record = Applications.objects.get(pk=pk)
-            record.delete()
-        except:
-            return Response({"error": "Object does not exists"})
 
-        return Response({"post": "delete post " + str(pk)})
+# class ApplicationsAPIList(generics.ListCreateAPIView):
+#     queryset = Applications.objects.all()
+#     serializer_class = ApplicationsSerializer
+#
+# class ApplicationsAPIUpdate(generics.UpdateAPIView):
+#     queryset = Applications.objects.all()
+#     serializer_class = ApplicationsSerializer
+#
+# class ApplicationsAPIDetailView(generics.RetrieveUpdateDestroyAPIView):
+#     queryset = Applications.objects.all()
+#     serializer_class = ApplicationsSerializer
+
 
 
 

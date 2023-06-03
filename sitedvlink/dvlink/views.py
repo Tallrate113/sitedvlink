@@ -2,6 +2,8 @@ from django.forms import model_to_dict
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from rest_framework import generics, viewsets, mixins
+from rest_framework.decorators import action
+from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.viewsets import GenericViewSet
@@ -39,8 +41,22 @@ class ApplicationsViewSet(mixins.CreateModelMixin,
                           mixins.DestroyModelMixin,
                           mixins.ListModelMixin,
                           GenericViewSet):
-    queryset = Applications.objects.all()
+    # queryset = Applications.objects.all()
     serializer_class = ApplicationsSerializer
+    permission_classes = (IsAuthenticatedOrReadOnly, )
+
+    def get_queryset(self):
+        pk = self.kwargs.get("pk")
+
+        if not pk:
+            return Applications.objects.all()[:10]
+
+        return Applications.objects.filter(pk=pk)
+
+    @action(methods=['get'], detail=True)
+    def stat(self, request, pk=None):
+        stat = Status.objects.get(pk=pk)
+        return Response({'stat': stat.name})
 
 
 

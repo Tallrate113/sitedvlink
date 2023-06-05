@@ -1,0 +1,49 @@
+{% extends 'dvlink/base.html' %}
+
+{% block content %}
+
+<form class="signin" action="{% url 'signin' %}" method="post">
+
+    {% csrf_token %}
+ <div class="form_sign_in">
+        <div class="field">
+            <div class="text_Регистрация">Регистрация</div>
+        <div class="field_sign_in_login" data-tooltip="Придумайте логин для будущего аккаунта">
+            {{ form.username }}
+        </div><div class="space"></div>
+        <div class="field_sign_in_phone" data-tooltip="Введите ваш телефон, Пример: +7 (***) ***-**-**">
+            <input type="tel" required placeholder="Телефон" onkeypress="return/[0-9+( )-]/i.test(event.key)" pattern="(?=.*[0-9]).{18}"/>
+        </div><div class="space"></div>
+        <div class="field_sign_in_email" data-tooltip="Введите ваш почтовый адрес">
+            {{ form.email }}
+        </div><div class="space"></div>
+             <div class="field_sign_in_name_organization" data-tooltip="Введите название вашей организации">
+            <input type="text" required placeholder="Название организации">
+        </div>
+            <div class="space"></div>
+        <div class="field_sign_in_password" data-tooltip="Придумайте пароль для будущего аккаунта">
+            {{ form.password1 }}
+        </div>
+        <div class="requirements">
+            Ваш пароль должен состоять не менее чем из 6 символов,<br>а также содержать как минимум одну прописную, одну строчную и одну цифру.
+          </div>
+        <div class="space"></div>
+        <div class="field_sign_in_password2" data-tooltip="Повторите пароль">
+            {{ form.password2 }}
+        </div>
+        <div class="checkbox">
+            <input id="check1" type="checkbox" name="check" required value="check1">
+            <label for="check1"><p>Я согласен с политикой конфиденциальности и<br>
+                на обработку моих персональных данных</p></label>
+        </div>
+        <div class="button_sign_in">
+            <button type="submit"><p>Зарегестрироваться</p></button>
+        </div>
+        <div class="text_Уже_есть_аккаунт">Уже есть аккаунт?</div>
+        <div class="text_Войти"><a href="{% url 'login' %}">Войти</a></div>
+        </div>
+        </div>
+
+</form>
+
+{% endblock %}

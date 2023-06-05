@@ -1,1 +1,19 @@
 {% extends 'dvlink/base.html' %}
+
+{% block content %}
+<form action="{% url 'login' %}" class="login" method="post">
+     {% csrf_token %}
+        <div class="field">
+            <div class="text_Регистрация">Вход</div>
+        <div class="field_log_in_login" data-tooltip="Введите логин вашего аккаунта">
+            {{ form.username }}
+        </div><div class="space"></div>
+        <div class="field_log_in_password" data-tooltip="Введите пароль вашего аккаунта">
+            {{ form.password }}
+        </div>
+        <div class="button_log_in">
+            <button type="submit"><p>Войти</p></button>
+        </div>
+        </div>
+    </form>
+{% endblock %}

@@ -77,7 +77,7 @@ body{
    margin-top: 31px;
 }
 
-form{
+    .application{
     display: flex;
     justify-content: center;
     margin-top: 160px;
@@ -416,7 +416,7 @@ button{
     color: #434343;
 }
 
-.form_sign_in{
+    .signin{
     display: flex;
     justify-content: center;
     margin-top: 160px;
@@ -464,7 +464,7 @@ button{
     font-size: 20px;
 }
 
-.form_log_in{
+.login{
     display: flex;
     justify-content: center;
     margin-top: 160px;

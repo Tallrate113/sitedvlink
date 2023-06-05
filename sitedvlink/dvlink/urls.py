@@ -12,6 +12,7 @@ urlpatterns = [
     path('', index, name='home'),
     path('account/', account, name='account'),
     path('signin/', signin, name='signin'),
+    path('login/', login, name='login'),
     path('api/v1/', include(router.urls)),
     path('api/v1/dvlink-auth', include('rest_framework.urls')),
 ]

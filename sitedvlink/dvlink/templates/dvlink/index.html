@@ -10,7 +10,7 @@
     <div class="error">
         {{ form.non_field_errors }}
     </div>
-<form class="application" action="{% url 'home' %}" method="post">
+<form class="application" action="{% url 'home' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     <div class="field"><div class="space"></div>
         <div class="field_fio" data-tooltip="Введите ваше ФИО">

@@ -22,6 +22,10 @@ class EmployeeAdmin(admin.ModelAdmin):
     list_filter = ('name',)
 
 
+class ProfileAdmin(admin.ModelAdmin):
+    list_display = ('organisation_name', 'number_phone')
+
+
 admin.site.register(Applications, ApplicationsAdmin)
 admin.site.register(Status, StatusAdmin)
 admin.site.register(Employee, EmployeeAdmin)

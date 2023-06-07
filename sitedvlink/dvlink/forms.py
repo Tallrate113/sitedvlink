@@ -60,3 +60,15 @@ class UserLoginForm(AuthenticationForm):
         model = User
         fields = ('username', 'password')
 
+
+class ProfileForm(forms.ModelForm):
+    organisation_name = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Название организации'
+    }))
+    number_phone = forms.CharField(widget=forms.TextInput(attrs={
+        'placeholder': 'Телефон', 'onkeypress': 'return/[0-9+( )-]/i.test(event.key)', 'pattern': '(?=.*[0-9]).{18}'
+    }))
+
+    class Meta:
+        model = Profile
+        fields = ('organisation_name', 'number_phone')

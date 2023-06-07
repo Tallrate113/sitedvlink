@@ -3,7 +3,6 @@
 {% block content %}
 
 <form class="signin" action="{% url 'signin' %}" method="post">
-
     {% csrf_token %}
  <div class="form_sign_in">
         <div class="field">
@@ -12,14 +11,15 @@
             {{ form.username }}
         </div><div class="space"></div>
         <div class="field_sign_in_phone" data-tooltip="Введите ваш телефон, Пример: +7 (***) ***-**-**">
-            <input type="tel" required placeholder="Телефон" onkeypress="return/[0-9+( )-]/i.test(event.key)" pattern="(?=.*[0-9]).{18}"/>
-        </div><div class="space"></div>
+            {{ p_reg_form.number_phone }}
+        </div>
+            <div class="space"></div>
         <div class="field_sign_in_email" data-tooltip="Введите ваш почтовый адрес">
             {{ form.email }}
         </div><div class="space"></div>
-             <div class="field_sign_in_name_organization" data-tooltip="Введите название вашей организации">
-            <input type="text" required placeholder="Название организации">
-        </div>
+            <div class="field_sign_in_name_organization" data-tooltip="Введите название вашей организации">
+                {{ p_reg_form.organisation_name }}
+            </div>
             <div class="space"></div>
         <div class="field_sign_in_password" data-tooltip="Придумайте пароль для будущего аккаунта">
             {{ form.password1 }}

@@ -348,7 +348,7 @@ button{
     color: #434343;
 }
 
-.field_sign_in_phone input[type="tel"]{
+.field_sign_in_phone input[type="text"]{
     font-family: 'Montserrat-Regular';
     background: #ffffff;
     border-radius: 20px;

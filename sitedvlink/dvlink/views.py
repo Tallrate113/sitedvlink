@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.db import transaction
 from django.shortcuts import render, redirect
 from rest_framework import mixins
 from rest_framework.decorators import action
@@ -30,15 +33,32 @@ def account(request):
     return render(request, 'dvlink/account.html', {'posts': posts, 'title': 'Аккаунт'})
 
 
+# def signin(request):
+#     if request.method == 'POST':
+#         form = RegisterUserForm(data=request.POST)
+#         if form.is_valid():
+#             form.save()
+#             return redirect('login')
+#     else:
+#         form = RegisterUserForm()
+#     context = {'form': form}
+#     return render(request, 'dvlink/signin.html', context)
+
 def signin(request):
     if request.method == 'POST':
-        form = RegisterUserForm(data=request.POST)
-        if form.is_valid():
-            form.save()
-            return redirect('login')
+        form = RegisterUserForm(request.POST)
+        p_reg_form = ProfileForm(request.POST)
+        if form.is_valid() and p_reg_form.is_valid():
+            user = form.save()
+            user.refresh_from_db()  # load the profile instance created by the signal
+            p_reg_form = ProfileForm(request.POST, instance=user.profile)
+            p_reg_form.full_clean()
+            p_reg_form.save()
+        return redirect('login')
     else:
         form = RegisterUserForm()
-    context = {'form': form}
+        p_reg_form = ProfileForm()
+    context = {'form': form, 'p_reg_form': p_reg_form}
     return render(request, 'dvlink/signin.html', context)
 
 

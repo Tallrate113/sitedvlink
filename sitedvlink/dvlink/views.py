@@ -102,6 +102,12 @@ class ApplicationsViewSet(mixins.CreateModelMixin,
         return Response({'stat': stat.name})
 
 
+def post(request):
+    context = {
+        'posts': Applications.objects.filter(user=request.user)
+    }
+
+    return render(request, 'account.html', context)
 
 
 

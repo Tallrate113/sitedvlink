@@ -1,33 +1,46 @@
 {% extends 'dvlink/base.html' %}
+{% load static %}
 
 {% block content %}
 <div class="form_account">
-    <h1>{{ user.username }}</h1>
+    <p>{{ user.username }}</p>
     <p>{{ user.profile.organisation_name }}</p>
     <p>Телефон: {{ user.profile.number_phone }}</p>
     <p>E-mail: {{ user.email }}</p>
-
 </div>
 
 <div class="form_applecation">
 
     {% for post in posts %}
-    <p>{{ post.author }}</p>
-    <p>{{ post.text }}</p>
-    <hr>
+    <table>
+        <tr><td><p>Номер</p></td>
+            <td><p>Текст обращения</p></td>
+            <td><p>Статус</p></td>
+            <td><p>Дата обращения</p></td>
+        </tr>
+        <tr>
+            <td><p>{{ post.id }}</p></td>
+            <td><p>{{ post.field_text_appeal }}</p></td>
+            <td><p>{{ post.stat }}</p></td>
+            <td><p>{{ post.time_create }}</p></td>
+            <td><button><img src="{% static 'dvlink/img/btnred.png' %}"></button></td>
+            <td><button><img src="{% static 'dvlink/img/btndel.png' %}"></button></td>
+        </tr>
+    </table>
     {% endfor %}
 
 </div>
-
-      <div class="form_creat_appl">
+<form class="form_creat_appl" action="{% url 'account' %}" method="post" enctype="multipart/form-data">
+{% csrf_token %}
         <div class="field">
             <div class="text_Регистрация">Создать</div>
         <div class="field_creat_appl" data-tooltip="Введите текст обращения">
-            <textarea required placeholder="Текст обращения"></textarea>
+            {{ form.field_text_appeal }}
         </div><div class="space"></div>
         <div class="button_creat_appl">
             <button type="submit"><p>Создать</p></button>
         </div>
         </div>
-        </div>
+
+</form>
 {% endblock %}

@@ -27,6 +27,16 @@ class AddAppliForm(forms.Form):
         fields = ('field_fio', 'field_number_phone', 'field_email', 'field_organisation_name', 'field_text_appeal')
 
 
+class AddAppliAccForm(forms.Form):
+    field_text_appeal = forms.CharField(widget=forms.Textarea(attrs={
+        'placeholder': 'Текст обращения'
+    }))
+
+    class Meta:
+        model = Applications
+        fields = ('field_text_appeal',)
+
+
 class RegisterUserForm(UserCreationForm):
     username = forms.CharField(widget=forms.TextInput(attrs={
         'placeholder': 'Логин'

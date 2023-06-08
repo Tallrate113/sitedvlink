@@ -29,8 +29,23 @@ def index(request):
 
 
 def account(request):
-    posts = Applications.objects.all()
-    return render(request, 'dvlink/account.html', {'posts': posts, 'title': 'Аккаунт'})
+    if request.method == 'POST':
+        form = AddAppliAccForm(request.POST, request.FILES)
+        Applications.field_organisation_name = Profile.organisation_name
+        Applications.field_email = User.email
+        Applications.field_number_phone = Profile.number_phone
+        Applications.field_fio = User.username
+        Applications.stat = 1
+        if form.is_valid():
+            try:
+                Applications.objects.create(**form.cleaned_data)
+                return redirect('account')
+            except:
+                form.add_error(None, 'Ошибка в создании заявки')
+    else:
+        form = AddAppliAccForm()
+    posts = Applications.objects.filter(user_id=request.user.id)
+    return render(request, 'dvlink/account.html', {'form': form, 'posts': posts, 'title': 'Аккаунт'})
 
 
 # def signin(request):
@@ -100,14 +115,6 @@ class ApplicationsViewSet(mixins.CreateModelMixin,
     def stat(self, pk=None):
         stat = Status.objects.get(pk=pk)
         return Response({'stat': stat.name})
-
-
-def post(request):
-    context = {
-        'posts': Applications.objects.filter(user=request.user)
-    }
-
-    return render(request, 'account.html', context)
 
 
 

@@ -1,6 +1,3 @@
-from django.contrib import messages
-from django.contrib.auth.decorators import login_required
-from django.db import transaction
 from django.shortcuts import render, redirect
 from rest_framework import mixins
 from rest_framework.decorators import action
@@ -29,22 +26,24 @@ def index(request):
 
 
 def account(request):
+    profile = Profile.objects.get(user=request.user)
+
     if request.method == 'POST':
-        form = AddAppliAccForm(request.POST, request.FILES)
-        Applications.field_organisation_name = Profile.organisation_name
-        Applications.field_email = User.email
-        Applications.field_number_phone = Profile.number_phone
-        Applications.field_fio = User.username
-        Applications.stat = 1
+        form = AddAppliAccForm(request.POST, profile=profile)
         if form.is_valid():
-            try:
-                Applications.objects.create(**form.cleaned_data)
-                return redirect('account')
-            except:
-                form.add_error(None, 'Ошибка в создании заявки')
+            application = form.save(commit=False)
+            application.field_organisation_name = profile.organisation_name
+            application.field_email = request.user.email
+            application.field_number_phone = profile.number_phone
+            application.field_fio = request.user.username
+            application.stat_id = 1
+            application.user = request.user
+            application.save()
+            return redirect('account')
     else:
-        form = AddAppliAccForm()
-    posts = Applications.objects.filter(user_id=request.user.id)
+        form = AddAppliAccForm(profile=profile)
+
+    posts = Applications.objects.filter(user=request.user)
     return render(request, 'dvlink/account.html', {'form': form, 'posts': posts, 'title': 'Аккаунт'})
 
 

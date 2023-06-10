@@ -612,6 +612,49 @@ button{
     margin-bottom: 160px;
 }
 
+.form_account #name{
+    margin-left: 30px;
+    padding-top: 20px;
+    font-size: 30px;
+    font-family:'Montserrat-Regular';
+}
+
+.form_account p{
+    margin-left: 30px;
+    font-size: 25px;
+    font-family:'Montserrat-Regular';
+}
+
+.applications{
+    font-family: 'Montserrat-Regular';
+    padding: 15px;
+    width: 100%;
+}
+
+.applications td p{
+    gap: 200px;
+}
+
+.btnred{
+    width: 30px;
+    height: 30px;
+    background-color: #A5A5A5;
+    padding: 0 0;
+}
+
+.btndel{
+    width: 30px;
+    height: 30px;
+    background-color: #A5A5A5;
+    padding: 0 0;
+}
+
+.btnexit button{
+    padding: 25px;
+    margin-left: 30px;
+    margin-top: 25px;
+}
+
 
 @media (max-width: 1600px){
 

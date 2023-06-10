@@ -18,7 +18,11 @@
               <a href="#contacts"> Контакты</a>
           </div>
           <div class="icon">
-              <a href="{% url 'signin' %}"><img src="{% static 'dvlink/img/icon.png' %}"></a>
+              {% if user.is_authenticated %}
+        <a href="{% url 'account' %}"><img src="{% static 'dvlink/img/icon.png' %}"></a>
+                {% else %}
+        <a href="{% url 'signin' %}"><img src="{% static 'dvlink/img/icon.png' %}"></a>
+                {% endif %}
           </div>
       </div>
 {% endblock header %}

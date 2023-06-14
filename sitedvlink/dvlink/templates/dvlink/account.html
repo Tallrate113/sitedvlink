@@ -1,6 +1,5 @@
 {% extends 'dvlink/base.html' %}
 {% load static %}
-
 {% block content %}
 <div class="form_account">
     <p id="name">{{ user.username }}</p>
@@ -27,7 +26,7 @@
             <td><p>{{ post.stat }}</p></td>
             <td><p>{{ post.time_create }}</p></td>
             <td><button class="btnred"><img src="{% static 'dvlink/img/btnred.png' %}"></button></td>
-            <td><button class="btndel"><img src="{% static 'dvlink/img/btndel.png' %}"></button></td>
+            <td><button class="btndel" data-post-id="{{ post.id }}"><img src="{% static 'dvlink/img/btndel.png' %}"></button></td>
         </tr>
         {% endfor %}
     </table>
@@ -49,6 +48,7 @@
         </div>
         </div>
 </form>
-<script src="{% static 'dvlink/js/jquery/3.7.0/jquery.min.js'%}"></script>
-<script src="{% static 'dvlink/\js/custom.js'%}"></script>
+
+<script src="{% static 'dvlink/js/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'dvlink/js/custom.js' %}"></script>
 {% endblock %}

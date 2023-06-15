@@ -7,7 +7,7 @@
     <p>Телефон: {{ user.profile.number_phone }}</p>
     <p>E-mail: {{ user.email }}</p>
     <div class="btnexit">
-    <button>Выйти из аккаунта</button>
+        <button><a href="{% url 'logout' %}">Выйти из аккаунта</a></button>
     </div>
 </div>
 
@@ -21,21 +21,22 @@
         </tr>
     {% for post in posts %}
         <tr>
-            <td><p>{{ post.id }}</p></td>
-            <td style="max-width:200px"><p>{{ post.field_text_appeal }}</p></td>
+            <td><p>{{ post.user_order_id }}</p></td>
+            <td style="max-width:200px"><p contenteditable="true" class="editable-field">{{ post.field_text_appeal }}</p></td>
             <td><p>{{ post.stat }}</p></td>
             <td><p>{{ post.time_create }}</p></td>
             <td><button class="btnred"><img src="{% static 'dvlink/img/btnred.png' %}"></button></td>
             <td><button class="btndel" data-post-id="{{ post.id }}"><img src="{% static 'dvlink/img/btndel.png' %}"></button></td>
         </tr>
-        {% endfor %}
+    {% endfor %}
     </table>
+</div>
 
 </div>
 <form class="form_creat_appl" action="{% url 'account' %}" method="post" enctype="multipart/form-data">
 {% csrf_token %}
         <div class="field">
-            <div class="text_Регистрация">Создать</div>
+            <div class="text_Регистрация">Создать заявку</div>
         <div class="field_creat_appl" data-tooltip="Введите текст обращения">
             {{ form.field_text_appeal }}
             {{ form.field_organisation_name }}
@@ -51,4 +52,6 @@
 
 <script src="{% static 'dvlink/js/jquery-3.7.0.min.js' %}"></script>
 <script src="{% static 'dvlink/js/custom.js' %}"></script>
+<script src="{% static 'dvlink/js/custom2.js' %}"></script>
+<script src="{% static 'dvlink/js/custom3.js' %}"></script>
 {% endblock %}

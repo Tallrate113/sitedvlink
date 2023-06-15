@@ -1,3 +1,4 @@
+from django.contrib.auth import authenticate, logout
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework import mixins
@@ -6,7 +7,6 @@ from rest_framework.generics import get_object_or_404
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
-
 from .forms import *
 from .models import *
 from django.contrib.auth.models import *
@@ -84,14 +84,28 @@ def login(request):
         if form.is_valid():
             username = request.POST['username']
             password = request.POST['password']
-            user = auth.authenticate(username=username, password=password)
+            user = authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
+                # Сохранение токена аутентификации в Local Storage
+                # Получаем профиль пользователя
+                profile = Profile.objects.get(user=user)
+
+                # Получаем или создаем токен авторизации пользователя
+                token, created = Token.objects.get_or_create(user=user)
+
+                # Получаем значение ключа токена
+                token_key = token.key
+                request.session['token'] = token_key
                 return redirect('account')
     else:
         form = UserLoginForm()
     context = {'form': form}
     return render(request, 'dvlink/login.html', context)
+
+def logout_view(request):
+    logout(request)
+    return redirect('home')
 
 
 class ApplicationsViewSet(mixins.CreateModelMixin,

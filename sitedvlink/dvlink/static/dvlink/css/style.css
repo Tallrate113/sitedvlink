@@ -660,6 +660,34 @@ button{
     text-decoration:none;
 }
 
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pagination a {
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #353535;
+  font-family: 'Montserrat-Bold';
+  color: white;
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.pagination a:hover {
+  background-color: #666666;
+}
+
+.current-page {
+  margin: 0 5px;
+  font-family: 'Montserrat-Bold';
+  color: #333333;
+  font-size: 20px;
+}
+
 
 @media (max-width: 1600px){
 

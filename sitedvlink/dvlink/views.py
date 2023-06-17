@@ -1,15 +1,18 @@
 from django.contrib.auth import authenticate, logout
+from django.core.paginator import Paginator
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from rest_framework import mixins
 from rest_framework.decorators import action
-from rest_framework.generics import get_object_or_404
+from rest_framework.generics import get_object_or_404, ListAPIView
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 from .forms import *
 from .models import *
 from django.contrib.auth.models import *
+
+from .pagination import ApplicationsPagination
 from .serializer import ApplicationsSerializer
 
 
@@ -45,8 +48,11 @@ def account(request):
     else:
         form = AddAppliAccForm(profile=profile)
 
-    posts = Applications.objects.filter(user=request.user)
-    return render(request, 'dvlink/account.html', {'form': form, 'posts': posts, 'title': 'Аккаунт'})
+    posts = Applications.objects.filter(user=request.user).order_by('user_order_id')
+    paginator = Paginator(posts, 10)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request, 'dvlink/account.html', {'page_obj': page_obj, 'form': form, 'title': 'Аккаунт'})
 
 
 # def signin(request):
@@ -108,6 +114,11 @@ def logout_view(request):
     return redirect('home')
 
 
+class ApplicationsListView(ListAPIView):
+    queryset = Applications.objects.all()
+    serializer_class = ApplicationsSerializer
+    pagination_class = ApplicationsPagination
+
 class ApplicationsViewSet(mixins.CreateModelMixin,
                           mixins.RetrieveModelMixin,
                           mixins.UpdateModelMixin,
@@ -132,8 +143,18 @@ class ApplicationsViewSet(mixins.CreateModelMixin,
         return Response({'stat': stat.name})
 
 
-def delete_application(pk):
+def delete_application(request, pk):
     application = get_object_or_404(Applications, pk=pk)
+    user_id = application.user_id
     application.delete()
+
+    update_application_order_numbers(user_id)
+
     return JsonResponse({'message': 'Запись успешно удалена'})
+
+def update_application_order_numbers(user_id):
+    user_applications = Applications.objects.filter(user_id=user_id).order_by('user_order_id')
+    for index, application in enumerate(user_applications, start=1):
+        application.user_order_id = index
+        application.save()
 

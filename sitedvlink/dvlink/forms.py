@@ -11,7 +11,8 @@ class AddAppliForm(forms.Form):
         'placeholder': 'ФИО'
     }))
     field_number_phone = forms.CharField(max_length=18, widget=forms.TextInput(attrs={
-        'placeholder': 'Телефон', 'onkeypress': 'return/[0-9+( )-]/i.test(event.key)', 'pattern': '(?=.*[0-9]).{18}'
+        'placeholder': 'Телефон', 'onkeypress': 'return/[0-9+( )-]/i.test(event.key)',
+        'pattern': r'\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}',
     }))
     field_email = forms.EmailField(max_length=255, widget=forms.EmailInput(attrs={
         'placeholder': "E-mail"
@@ -54,24 +55,32 @@ class RegisterUserForm(UserCreationForm):
     password_validator = RegexValidator(
         regex=r'^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}$'
     )
-    username = forms.CharField(widget=forms.TextInput(attrs={
+    username = forms.CharField(strip=True, widget=forms.TextInput(attrs={
         'placeholder': 'Логин'
     }))
     email = forms.CharField(max_length=255, widget=forms.EmailInput(attrs={
         'placeholder': 'E-mail'
     }))
-    password1 = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={
-        'validators': [password_validator],
+    password1 = forms.CharField(validators=[password_validator], max_length=255, widget=forms.PasswordInput(attrs={
         'placeholder': 'Пароль'
     }))
-    password2 = forms.CharField(max_length=255, widget=forms.PasswordInput(attrs={
-        'validators': [password_validator],
+    password2 = forms.CharField(validators=[password_validator], max_length=255, widget=forms.PasswordInput(attrs={
         'placeholder': 'Повторите пароль'
     }))
 
     class Meta:
         model = User
         fields = ('username', 'password1', 'password2', 'email')
+
+    def clean(self):
+        cleaned_data = super().clean()
+        password1 = cleaned_data.get('password1')
+        password2 = cleaned_data.get('password2')
+
+        if password1 and password2 and password1 != password2:
+            raise forms.ValidationError('Пароли не совпадают')
+
+        return cleaned_data
 
 
 
@@ -93,7 +102,8 @@ class ProfileForm(forms.ModelForm):
         'placeholder': 'Название организации'
     }))
     number_phone = forms.CharField(widget=forms.TextInput(attrs={
-        'placeholder': 'Телефон', 'onkeypress': 'return/[0-9+( )-]/i.test(event.key)', 'pattern': '(?=.*[0-9]).{18}'
+        'placeholder': 'Телефон', 'onkeypress': 'return/[0-9+( )-]/i.test(event.key)',
+        'pattern': r'\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}',
     }))
 
     class Meta:

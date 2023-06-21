@@ -22,20 +22,20 @@ body{
     background-color: #D9D9D9;
     display: flex;
     justify-content:space-between;
-    padding-bottom: 27px;
+    padding-bottom: 10px;
 }
 
 .logo_header img{
-    margin-top: 27px;
-    width: 146px;
-    height: 96px;
-    margin-left: 120px;
+    margin-top: 20px;
+    width: 73px;
+    height: 48px;
+    margin-left: 240px;
 }
 
 .text_menu{
     display: flex;
-    margin-top: 48px;
-    gap: 113px;
+    margin-top: 28px;
+    gap: 150px;
 }
 
 .text_menu a{
@@ -43,15 +43,14 @@ body{
     color: black;
     font-weight: 700;
     font-family: 'Montserrat-Regular';
-    font-size: 40px;
-    margin-right: 157px;
+    font-size: 25px;
 }
 
 .icon img{
-    margin-top: 51px;
-    width: 49px;
-    height: 49px;
-    margin-right: 157px;
+    margin-top: 31px;
+    width: 30px;
+    height: 30px;
+    margin-right: 357px;
 }
 
 
@@ -91,10 +90,16 @@ body{
 
 .error{
    color:#7B0000;
-   font-size:35px;
+   font-size:20px;
    font-family: 'Montserrat-Medium';
    text-align: center;
    text-decoration: none;
+   margin: 0 0;
+   list-style-type: none;
+}
+
+.error li {
+  list-style-type: none;
 }
 
 input{
@@ -172,50 +177,42 @@ textarea{
     color: #434343;
 }
 
-.checkbox p{
-    margin-left: 32px;
+.checkbox {
+  display: flex;
+  align-items: center;
 }
 
-input[type=checkbox] {
-        display: none;
-    }
+.checkbox p {
+  font-size: 20px;
+  font-family: 'Montserrat-Regular';
+  color: #434343;
+  line-height: 1.6;
+}
 
-    .checkbox label:before {
-            border-radius: 2px;
-        }
+.checkbox input[type=checkbox] {
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  margin-right: 10px;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
 
-        input[type=checkbox]:checked + label:before {
+.checkbox input[type=checkbox]:checked {
+  background-color: #ffffff;
+}
+
+.checkbox input[type=checkbox]:checked::before {
                 content: "\2713";
-                font-size: 25px;
+                font-size: 23px;
                 color: black;
                 text-align: center;
                 line-height: 25px;
-            }
-            label {
-                    display: inline-block;      
-                    cursor: pointer;   
-                    position: relative;   
-                    padding-left: 25px; 
-                    margin-right: 15px;
-                    font-size: 20px;
-                    font-family: 'Montserrat-Regular';
-                    color: #434343;
-                    line-height: 40px;
-                }
-                label:before {
-                        content: "";
-                        display: inline-block;
-                        width: 25px;
-                        height: 25px;
-                        margin-right: 10px;
-                        position: absolute;
-                        left: 0;
-                        bottom: 50px;
-                        background-color: #ffffff;
-                    }
- .checkbox{
-    margin-bottom: 22px;
- }
+}
+
 
 
 .button{
@@ -319,11 +316,10 @@ button{
 }
 
 .form_applecation{
-    width: 1776px;
-    height: 700px;
+    width: 1676px;
     background-color: #D9D9D9;
     margin-top: 100px;
-    margin-left:72px;
+    margin-left:122px;
     border-radius: 20px;
     margin-bottom: 160px;
 }
@@ -333,7 +329,7 @@ button{
     color: black;
     font-size: 45px;
     margin-top: 70px;
-    margin-bottom: 79px;
+    margin-bottom: 39px;
     text-align: center;
 }
 
@@ -426,6 +422,13 @@ button{
     margin-left: 504px;
     border-radius: 150px;
     margin-bottom: 160px;
+}
+
+.messages {
+  font-size: 10px;
+  color: red;
+  margin: 5px 0;
+  padding: 5px;
 }
 
 .button_sign_in{
@@ -693,11 +696,11 @@ button{
 
     .text_menu{
         display: flex;
-        margin-top: 48px;
-        gap: 0px;
+        margin-top: 28px;
+        gap: 150px;
     }
 
-    .form{
+    .application{
         display: flex;
         justify-content: center;
         margin-top: 160px;
@@ -784,29 +787,51 @@ button{
         line-height: 280%;
     }
 
-    .form_sign_in{
-        display: flex;
-        justify-content: center;
-        margin-top: 160px;
-        width: 913px;
-        height: 1300px;
-        background-color: #A5A5A5;
-        margin-left: 354px;
-        border-radius: 150px;
-        margin-bottom: 160px;
-    }
+        .signin{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 913px;
+    height: 1300px;
+    background-color: #A5A5A5;
+    margin-left:354px;
+    border-radius: 150px;
+    margin-bottom: 160px;
+}
 
-    .form_log_in{
-        display: flex;
-        justify-content: center;
-        margin-top: 160px;
-        width: 913px;
-        height: 600px;
-        background-color: #A5A5A5;
-        margin-left: 354px;
-        border-radius: 150px;
-        margin-bottom: 160px;
-    }
+    .login{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 913px;
+    height: 600px;
+    background-color: #A5A5A5;
+    margin-left: 354px;
+    border-radius: 150px;
+    margin-bottom: 160px;
+}
+
+    .form_applecation{
+    width: 1376px;
+    height: 700px;
+    background-color: #D9D9D9;
+    margin-top: 100px;
+    margin-left:122px;
+    border-radius: 20px;
+    margin-bottom: 160px;
+}
+
+.form_creat_appl{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 913px;
+    height: 535px;
+    background-color: #A5A5A5;
+    margin-left: 374px;
+    border-radius: 100px;
+    margin-bottom: 160px;
+}
 }
 
 
@@ -832,16 +857,17 @@ button{
     }
 
     .logo_header img{
-        margin-top: 27px;
-        width: 116px;
-        height: 76px;
+        margin-top: 25px;
+        width: 58px;
+        height: 38px;
         margin-left: 120px;
-        padding-right: 80px;
+        padding-right: 20px;
     }
     
     .text_menu{
         display: flex;
-        margin-top: 48px;
+        margin-top: 30px;
+        gap: 150px;
     }
     
     .text_menu a{
@@ -849,14 +875,13 @@ button{
         color: black;
         font-weight: 700;
         font-family: 'Montserrat-Regular';
-        font-size: 30px;
-        margin-right: 157px;
+        font-size: 23px;
     }
     
     .icon img{
-        margin-top: 51px;
-        width: 39px;
-        height: 39px;
+        margin-top: 31px;
+        width: 25px;
+        height: 25px;
         margin-right: 157px;
     }
 
@@ -882,7 +907,7 @@ button{
        margin-top: 31px;
     }
 
-    .form{
+    .application{
         display: flex;
         justify-content: center;
         margin-top: 160px;
@@ -932,7 +957,7 @@ button{
         color: #434343;
     }
     
-    .field_number_phone input[type="tel"]{
+    .field_number_phone input[type="text"]{
         font-family: 'Montserrat-Regular';
         background: #ffffff;
         border-radius: 20px;
@@ -943,7 +968,7 @@ button{
         color: #434343;
     }
     
-    .field_number_phone input[type="tel"]:invalid:not(:focus):not(:placeholder-shown) {
+    .field_number_phone input[type="text"]:invalid:not(:focus):not(:placeholder-shown) {
         background: pink;
         }
     
@@ -972,54 +997,8 @@ button{
         font-size: 20px;
         color: #434343;
     }
-    
-    .checkbox p{
-        margin-left: 32px;
-        font-size: 15px;
-    }
-    
-    input[type=checkbox] {
-            display: none;
-        }
-    
-        .checkbox label:before {
-                border-radius: 2px;
-            }
-    
-            input[type=checkbox]:checked + label:before {
-                    content: "\2713";
-                    font-size: 10px;
-                    color: black;
-                    text-align: center;
-                    line-height: 25px;
-                }
-                label {
-                        display: inline-block;      
-                        cursor: pointer;   
-                        position: relative;   
-                        padding-left: 25px; 
-                        margin-right: 15px;
-                        font-size: 20px;
-                        font-family: 'Montserrat-Regular';
-                        color: #434343;
-                        line-height: 40px;
-                    }
-                    label:before {
-                            content: "";
-                            display: inline-block;
-                            width: 20px;
-                            height: 20px;
-                            margin-right: 10px;
-                            position: absolute;
-                            left: 0;
-                            bottom: 50px;
-                            background-color: #ffffff;
-                        }
-     .checkbox{
-        margin-bottom: 22px;
-     } 
-    
-    
+
+
     .button{
         display: flex;
         justify-content: center;
@@ -1096,27 +1075,971 @@ button{
         line-height: 280%;
     }
 
-    .form_sign_in{
+          .signin{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 713px;
+    height: 1100px;
+    background-color: #A5A5A5;
+    margin-left:324px;
+    border-radius: 150px;
+    margin-bottom: 160px;
+}
+
+    .login{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 813px;
+    height: 500px;
+    background-color: #A5A5A5;
+    margin-left: 274px;
+    border-radius: 150px;
+    margin-bottom: 160px;
+}
+
+    .form_applecation{
+    width: 1076px;
+    height: 700px;
+    background-color: #D9D9D9;
+    margin-top: 100px;
+    margin-left:122px;
+    border-radius: 20px;
+    margin-bottom: 160px;
+    }
+
+    .form_creat_appl{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 713px;
+    height: 485px;
+    background-color: #A5A5A5;
+    margin-left: 314px;
+    border-radius: 100px;
+    margin-bottom: 160px;
+}
+
+.form_account{
+    width: 680px;
+    height: 350px;
+    background-color: #D9D9D9;
+    margin-top: 40px;
+    margin-left:120px;
+    border-radius: 20px;
+}
+
+.form_account #name{
+    margin-left: 30px;
+    padding-top: 20px;
+    font-size: 25px;
+    font-family:'Montserrat-Regular';
+}
+
+.form_account p{
+    margin-left: 30px;
+    font-size: 20px;
+    font-family:'Montserrat-Regular';
+}
+
+.btnexit button{
+    padding: 25px;
+    margin-left: 30px;
+    margin-top: 25px;
+}
+
+.btnexit a{
+    color: white;
+    text-decoration:none;
+}
+
+
+.button_sign_in{
+    display: flex;
+    justify-content: center;
+}
+
+.button_sign_in button[type="submit"]{
+    width: 226px;
+    height: 53px;
+    background-color: #353535;
+    border: none;
+    color: white;
+    font-size: 15px;
+    font-family: 'Montserrat-Bold';
+    border-radius: 20px;
+}
+
+.text_Уже_есть_аккаунт{
+    font-family: Montserrat-Regular;
+    color: white;
+    margin-top: 20px;
+    text-align: center;
+    font-size: 15px;
+}
+
+.text_Войти{
+    text-align: center;
+    margin-top: 25px;
+}
+
+.text_Войти a{
+    text-decoration: none;
+    font-family: Montserrat-Medium;
+    color: white;
+    font-size: 15px;
+}
+
+.text_Регистрация{
+    font-family: Montserrat-Medium;
+    color: black;
+    font-size: 30px;
+    margin-top: 70px;
+    margin-bottom: 79px;
+    text-align: center;
+}
+
+.field_sign_in_login input[type="text"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 561px;
+    height: 40px;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.field_sign_in_phone input[type="text"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+   width: 561px;
+    height: 40px;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.field_sign_in_phone input[type="text"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_email input[type="email"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 561px;
+    height: 40px;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.field_sign_in_email input[type="email"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_password input[type="password"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 561px;
+    height: 40px;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.field_sign_in_password2 input[type="password"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 561px;
+    height: 40px;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.field_sign_in_password input[type="password"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_name_organization input{
+    font-family: 'Montserrat-Regular';
+    padding-left: 64px;
+    width: 561px;
+    height: 40px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    color: #434343;
+    margin-left:40px;
+}
+
+.checkbox {
+  display: flex;
+  align-items: center;
+  margin-left:45px;
+}
+
+.checkbox p {
+  font-size: 15px;
+  font-family: 'Montserrat-Regular';
+  color: #434343;
+  line-height: 1.6;
+}
+
+.checkbox input[type=checkbox] {
+  width: 17px;
+  height: 17px;
+  padding: 0;
+  margin-right: 10px;
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  outline: none;
+  cursor: pointer;
+}
+
+.checkbox input[type=checkbox]:checked {
+  background-color: #ffffff;
+}
+
+.checkbox input[type=checkbox]:checked::before {
+                content: "\2713";
+                font-size: 23px;
+                color: black;
+                text-align: center;
+                line-height: 25px;
+}
+}
+
+
+
+
+@media (max-width: 360px){
+
+    .logo_header img{
+        margin-top: 27px;
+        width: 50px;
+        height: 30px;
+        margin-left: 25px;
+        padding-right: 25px;
+    }
+
+    .text_menu{
+        display: flex;
+        margin-top: 25px;
+    }
+
+    .text_menu a{
+        text-decoration: none;
+        color: black;
+        font-weight: 700;
+        font-family: 'Montserrat-Regular';
+        font-size: 13px;
+        margin-right: 30px;
+    }
+
+    .icon img{
+        margin-top: 28px;
+        width: 25px;
+        height: 25px;
+        margin-right: 80px;
+    }
+
+    .text_information_1{
+   text-align: center;
+   font-size: 38px;
+   font-family: 'Montserrat-Bold';
+   color: #434343;
+   margin-bottom: 0px;
+}
+
+    .text_information_2{
+   font-size: 23px;
+   font-family: 'Montserrat-Medium';
+   color: #434343;
+   text-align: center;
+   margin-top: 31px;
+}
+
+    .application{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 330px;
+    height: 861px;
+    background-color: #A5A5A5;
+    margin-left: 7px;
+    border-radius: 100px;
+    margin-bottom: 160px;
+    }
+
+    .space{
+        margin-bottom: 70px;
+    }
+
+    input{
+        padding-left: 34px;
+    }
+
+    .field_strok{
+        display: flex;
+        gap: 0px;
+    }
+
+    textarea{
+        font-family: 'Montserrat-Regular';
+        padding-left: 64px;
+        width: 221px;
+        height: 96px;
+        max-width: 221px;
+        max-height: 96px;
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: #434343;
+        margin-left: 20px;
+    }
+
+    .field_fio input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 251px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+        margin-left: 20px;
+    }
+
+    .field_number_phone input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+        margin-left: 20px;
+    }
+
+    .field_number_phone input[type="tel"]:invalid:not(:focus):not(:placeholder-shown) {
+        background: pink;
+        }
+
+    .field_email input[type="email"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 100px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+        margin-left: 20px;
+    }
+
+    .field_email input[type="email"]:invalid:not(:focus):not(:placeholder-shown) {
+        background: pink;
+        }
+
+    .field_organisation_name input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background-color: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 251px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+        margin-left: 20px;
+    }
+
+    .checkbox p{
+        margin-left: 45px;
+        font-size: 13px;
+
+    }
+
+    input[type=checkbox] {
+            display: none;
+        }
+
+        .checkbox label:before {
+                border-radius: 2px;
+                margin-left: 20px;
+            }
+
+            input[type=checkbox]:checked + label:before {
+                    content: "\2713";
+                    font-size: 18px;
+                    color: black;
+                    text-align: center;
+                    line-height: 20px;
+                }
+                label {
+                        display: inline-block;
+                        cursor: pointer;
+                        position: relative;
+                        padding-left: 25px;
+                        margin-right: 15px;
+                        font-size: 20px;
+                        font-family: 'Montserrat-Regular';
+                        color: #434343;
+                        line-height: 30px;
+                    }
+                    label:before {
+                            content: "";
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 10px;
+                            position: absolute;
+                            left: 0;
+                            bottom: 50px;
+                            background-color: #ffffff;
+                        }
+     .checkbox{
+        margin-bottom: 22px;
+     }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+
+    button{
+    width: 196px;
+    height: 53px;
+    background-color: #353535;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-family: 'Montserrat-Bold';
+    border-radius: 10px;
+    text-align: center;
+}
+
+    .maps{
+        margin-left: 10px;
+        position: absolute;
+        width: 320px;
+    }
+
+    .folder{
+        background-color: #7D7D7D;
+        height: 250px;
+        margin-top: 250x;
+    }
+
+    .logo img{
+        width: 116px;
+        height: 76px;
+        display: inline-block;
+        margin-left: 120px;
+        margin-top: 97px;
+    }
+
+
+    .text_copirate{
+        display:inline-block;
+        color: #D9D9D9;
+        font-family: 'Montserrat-Regular';
+        font-size: 14px;
+        margin-left: 65px;
+    }
+
+    .inf_contacts{
+        position: absolute;
+        margin-top: 309px;
+        margin-left: 167px;
+    }
+
+    .bgcircle{
+        background-color: white;
+        border-radius: 50%;
+        width: 200px;
+        height: 200px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        margin-left: -120px;
+    }
+
+    .text_contacts_zagl h1{
+        padding-top: 30px;
+        font-family: 'Montserrat-Medium';
+        font-size:15px;
+        margin-bottom: 79px;
+    }
+
+    .text_inf{
+        text-align: left;
+        margin-left: 55px;
+        font-size: 8px;
+        font-family:'Montserrat-Medium' ;
+        line-height: 200%;
+        margin-top:-50px;
+    }
+
+     .signin{
         display: flex;
         justify-content: center;
         margin-top: 160px;
-        width: 913px;
-        height: 1300px;
+        width: 330px;
+        height: 1400px;
         background-color: #A5A5A5;
-        margin-left: 204px;
+        margin-left: 7px;
         border-radius: 150px;
         margin-bottom: 160px;
     }
 
-    .form_log_in{
+    .text_Регистрация{
+    font-size: 35px;
+    }
+
+    .field_sign_in_login input[type="text"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+.field_sign_in_phone input[type="text"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+.field_sign_in_phone input[type="tel"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_email input[type="email"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+.field_sign_in_email input[type="email"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_password input[type="password"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+.field_sign_in_password2 input[type="password"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+.field_sign_in_password input[type="password"]:invalid:not(:focus):not(:placeholder-shown) {
+    background: pink;
+    }
+
+.field_sign_in_name_organization input{
+    font-family: 'Montserrat-Regular';
+    padding-left: 34px;
+    width: 251px;
+    height: 50px;
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+    .login{
         display: flex;
         justify-content: center;
         margin-top: 160px;
-        width: 913px;
+        width: 330px;
         height: 600px;
         background-color: #A5A5A5;
-        margin-left: 214px;
+        margin-left: 7px;
         border-radius: 150px;
         margin-bottom: 160px;
+    }
+
+    .field_log_in_login input[type="text"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+    .space{
+    margin-bottom: 79px;
+}
+
+    .field_log_in_password input[type="password"]{
+    font-family: 'Montserrat-Regular';
+    background: #ffffff;
+    border-radius: 20px;
+    border: none;
+    width: 251px;
+    height: 50px;
+    font-size: 20px;
+    color: #434343;
+    margin-left: 20px;
+}
+
+    .form_account{
+    margin-left: 7px;
+    height: 255px;
+    width: 329px;
+    }
+
+    .form_account #name{
+    margin-left: 30px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-family:'Montserrat-Regular';
+}
+
+    .form_account p{
+    margin-left: 30px;
+    font-size: 14px;
+    font-family:'Montserrat-Regular';
+}
+
+    .btnexit button{
+    padding: 0px;
+    margin-left: 30px;
+    margin-top: 25px;
+}
+
+    .form_applecation{
+    width: 329px;
+    margin-left: 7px;
+    font-size: 11px;
+    }
+
+    .form_creat_appl{
+    width: 329px;
+    margin-left: 7px;
+    }
+}
+
+
+@media (max-width: 884px){
+
+    .logo_header img{
+        margin-top: 27px;
+        width: 100px;
+        height: 60px;
+        margin-left: 120px;
+        padding-right: 80px;
+    }
+
+    .text_menu{
+        display: flex;
+        margin-top: 48px;
+    }
+
+    .text_menu a{
+        text-decoration: none;
+        color: black;
+        font-weight: 700;
+        font-family: 'Montserrat-Regular';
+        font-size: 25px;
+        margin-right: 50px;
+    }
+
+    .icon img{
+        margin-top: 48px;
+        width: 35px;
+        height: 35px;
+        margin-right: 80px;
+    }
+
+    .application{
+    display: flex;
+    justify-content: center;
+    margin-top: 160px;
+    width: 813px;
+    height: 861px;
+    background-color: #A5A5A5;
+    margin-left: 35px;
+    border-radius: 150px;
+    margin-bottom: 160px;
+    }
+
+    .space{
+        margin-bottom: 70px;
+    }
+
+    input{
+        padding-left: 64px;
+    }
+
+    .field_strok{
+        display: flex;
+        gap: 15px;
+    }
+
+    textarea{
+        font-family: 'Montserrat-Regular';
+        padding-left: 64px;
+        width: 451px;
+        height: 96px;
+        max-width: 451px;
+        max-height: 96px;
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        font-size: 20px;
+        color: #434343;
+    }
+
+    .field_fio input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 451px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+    }
+
+    .field_number_phone input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 180px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+    }
+
+    .field_number_phone input[type="tel"]:invalid:not(:focus):not(:placeholder-shown) {
+        background: pink;
+        }
+
+    .field_email input[type="email"]{
+        font-family: 'Montserrat-Regular';
+        background: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 180px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+    }
+
+    .field_email input[type="email"]:invalid:not(:focus):not(:placeholder-shown) {
+        background: pink;
+        }
+
+    .field_organisation_name input[type="text"]{
+        font-family: 'Montserrat-Regular';
+        background-color: #ffffff;
+        border-radius: 20px;
+        border: none;
+        width: 451px;
+        height: 58px;
+        font-size: 20px;
+        color: #434343;
+    }
+
+    .checkbox p{
+        margin-left: 32px;
+        font-size: 15px;
+    }
+
+    input[type=checkbox] {
+            display: none;
+        }
+
+        .checkbox label:before {
+                border-radius: 2px;
+            }
+
+            input[type=checkbox]:checked + label:before {
+                    content: "\2713";
+                    font-size: 18px;
+                    color: black;
+                    text-align: center;
+                    line-height: 23px;
+                }
+                label {
+                        display: inline-block;
+                        cursor: pointer;
+                        position: relative;
+                        padding-left: 25px;
+                        margin-right: 15px;
+                        font-size: 20px;
+                        font-family: 'Montserrat-Regular';
+                        color: #434343;
+                        line-height: 40px;
+                    }
+                    label:before {
+                            content: "";
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            margin-right: 10px;
+                            position: absolute;
+                            left: 0;
+                            bottom: 50px;
+                            background-color: #ffffff;
+                        }
+     .checkbox{
+        margin-bottom: 22px;
+     }
+
+    .button{
+        display: flex;
+        justify-content: center;
+    }
+
+    .maps{
+        margin-left: 120px;
+        position: absolute;
+        width: 100px;
+    }
+
+    .folder{
+        background-color: #7D7D7D;
+        height: 250px;
+        margin-top: 250x;
+    }
+
+    .logo img{
+        width: 116px;
+        height: 76px;
+        display: inline-block;
+        margin-left: 380px;
+        margin-top: 97px;
+    }
+
+
+    .text_copirate{
+        display:inline-block;
+        color: #D9D9D9;
+        font-family: 'Montserrat-Regular';
+        font-size: 14px;
+        margin-left: 322px;
+    }
+
+    .inf_contacts{
+        position: absolute;
+        margin-top: 309px;
+        margin-left: 167px;
+    }
+
+    .bgcircle{
+        background-color: white;
+        border-radius: 50%;
+        width: 340px;
+        height: 340px;
+        box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    }
+
+    .text_contacts_zagl h1{
+        padding-top: 70px;
+        font-family: 'Montserrat-Medium';
+        font-size:25px;
+        margin-bottom: 79px;
+    }
+
+    .text_inf{
+        text-align: left;
+        margin-left: 55px;
+        font-size: 12px;
+        font-family:'Montserrat-Medium' ;
+        line-height: 200%;
+        margin-top:-50px;
+    }
+
+     .signin{
+        display: flex;
+        justify-content: center;
+        margin-top: 160px;
+        width: 813px;
+        height: 1300px;
+        background-color: #A5A5A5;
+        margin-left: 25px;
+        border-radius: 150px;
+        margin-bottom: 160px;
+    }
+
+    .login{
+        display: flex;
+        justify-content: center;
+        margin-top: 160px;
+        width: 813px;
+        height: 600px;
+        background-color: #A5A5A5;
+        margin-left: 25px;
+        border-radius: 150px;
+        margin-bottom: 160px;
+    }
+
+    .form_account{
+    margin-left: 25px;
+    }
+
+    .form_applecation{
+    width: 813px;
+    margin-left: 25px;
+    }
+
+    .form_creat_appl{
+    width: 813px;
+    margin-left: 25px;
     }
 }

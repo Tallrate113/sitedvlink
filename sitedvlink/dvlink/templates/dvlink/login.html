@@ -1,7 +1,7 @@
 {% extends 'dvlink/base.html' %}
-
+{% load static %}
 {% block content %}
-<form action="{% url 'login' %}" class="login" method="post">
+<form action="{% url 'login' %}" class="login" method="post" autocomplete="off">
      {% csrf_token %}
         <div class="field">
             <div class="text_Регистрация">Вход</div>
@@ -11,6 +11,13 @@
         <div class="field_log_in_password" data-tooltip="Введите пароль вашего аккаунта">
             {{ form.password }}
         </div>
+     {% if messages %}
+    <ul class="messages">
+      {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
         <div class="button_log_in">
             <button type="submit"><p>Войти</p></button>
         </div>

@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.contrib.auth import authenticate, logout
 from django.core.paginator import Paginator
 from django.http import JsonResponse
@@ -71,15 +72,28 @@ def signin(request):
         form = RegisterUserForm(request.POST)
         p_reg_form = ProfileForm(request.POST)
         if form.is_valid() and p_reg_form.is_valid():
-            user = form.save()
-            user.refresh_from_db()  # load the profile instance created by the signal
-            p_reg_form = ProfileForm(request.POST, instance=user.profile)
-            p_reg_form.full_clean()
-            p_reg_form.save()
-        return redirect('login')
+            password1 = form.cleaned_data['password1']
+            password2 = form.cleaned_data['password2']
+            if password1 == password2:
+                user = form.save()
+                user.refresh_from_db()
+                p_reg_form = ProfileForm(request.POST, instance=user.profile)
+                p_reg_form.full_clean()
+                p_reg_form.save()
+                return redirect('login')
+            else:
+                messages.error(request, 'Пароли не совпадают')
+        else:
+            for field, errors in form.errors.items():
+                for error in errors:
+                    messages.error(request, error)
+            for field, errors in p_reg_form.errors.items():
+                for error in errors:
+                    messages.error(request, error)
     else:
         form = RegisterUserForm()
         p_reg_form = ProfileForm()
+
     context = {'form': form, 'p_reg_form': p_reg_form}
     return render(request, 'dvlink/signin.html', context)
 
@@ -88,8 +102,8 @@ def login(request):
     if request.method == 'POST':
         form = UserLoginForm(data=request.POST)
         if form.is_valid():
-            username = request.POST['username']
-            password = request.POST['password']
+            username = form.cleaned_data['username']
+            password = form.cleaned_data['password']
             user = authenticate(username=username, password=password)
             if user:
                 auth.login(request, user)
@@ -104,8 +118,13 @@ def login(request):
                 token_key = token.key
                 request.session['token'] = token_key
                 return redirect('account')
+            else:
+                messages.error(request, 'Неправильное имя пользователя или пароль')
+        else:
+            messages.error(request, 'Неправильное имя пользователя или пароль')
     else:
         form = UserLoginForm()
+
     context = {'form': form}
     return render(request, 'dvlink/login.html', context)
 

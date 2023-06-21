@@ -1,13 +1,21 @@
 {% extends 'dvlink/base.html' %}
-
+{% load static %}
 {% block content %}
 
-<form class="signin" action="{% url 'signin' %}" method="post">
+<form class="signin" action="{% url 'signin' %}" method="post" autocomplete="off">
     {% csrf_token %}
- <div class="form_sign_in">
         <div class="field">
             <div class="text_Регистрация">Регистрация</div>
-        <div class="field_sign_in_login" data-tooltip="Придумайте логин для будущего аккаунта">
+     {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>
+        {{ message|slice:'password2:' }}
+      </li>
+    {% endfor %}
+  </ul>
+{% endif %}
+        <div class="field_sign_in_login" data-tooltip="Придумайте логин без пробелов">
             {{ form.username }}
         </div><div class="space"></div>
         <div class="field_sign_in_phone" data-tooltip="Введите ваш телефон, Пример: +7 (***) ***-**-**">
@@ -21,7 +29,7 @@
                 {{ p_reg_form.organisation_name }}
             </div>
             <div class="space"></div>
-        <div class="field_sign_in_password" data-tooltip="Придумайте пароль для будущего аккаунта">
+        <div class="field_sign_in_password" data-tooltip="Придумайте пароль для будущего аккаунта ">
             {{ form.password1 }}
         </div>
         <div class="requirements">
@@ -31,19 +39,21 @@
         <div class="field_sign_in_password2" data-tooltip="Повторите пароль">
             {{ form.password2 }}
         </div>
-        <div class="checkbox">
-            <input id="check1" type="checkbox" name="check" required value="check1">
-            <label for="check1"><p>Я согласен с политикой конфиденциальности и<br>
-                на обработку моих персональных данных</p></label>
-        </div>
+                <div class="checkbox">
+  <input id="check1" type="checkbox" name="check" required value="check1">
+  <label for="check1"></label>
+  <p>Я согласен с политикой конфиденциальности <br>и на обработку моих персональных данных</p>
+</div>
         <div class="button_sign_in">
             <button type="submit"><p>Зарегестрироваться</p></button>
         </div>
         <div class="text_Уже_есть_аккаунт">Уже есть аккаунт?</div>
         <div class="text_Войти"><a href="{% url 'login' %}">Войти</a></div>
         </div>
-        </div>
+
 
 </form>
-
+<script src="{% static 'dvlink/js/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'dvlink/js/phone.js' %}"></script>
+<script src="{% static 'dvlink/js/email.js' %}"></script>
 {% endblock %}

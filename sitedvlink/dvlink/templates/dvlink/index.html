@@ -1,5 +1,5 @@
 {% extends 'dvlink/base.html' %}
-
+{% load static %}
 {% block content %}
 <div class="information_about_the_company">
         <div class="text_information">
@@ -10,7 +10,7 @@
     <div class="error">
         {{ form.non_field_errors }}
     </div>
-<form class="application" id="form" action="{% url 'home' %}" method="post" enctype="multipart/form-data">
+<form class="application" id="form" action="{% url 'home' %}" method="post" enctype="multipart/form-data" autocomplete="off">
     {% csrf_token %}
     <div class="field"><div class="space"></div>
         <div class="field_fio" data-tooltip="Введите ваше ФИО">
@@ -26,6 +26,9 @@
             {{ form.field_email }}
         </div>
         </div>
+        {% if form.field_email.errors %}
+        <div class="error">{{ form.field_email.errors }}</div>
+        {% endif %}
         <div class="space"></div>
         <div class="field_organisation_name" data-tooltip="Введите название вашей организации">
             {{ form.field_organisation_name }}
@@ -35,10 +38,10 @@
             {{ form.field_text_appeal }}
         </div>
         <div class="checkbox">
-            <input id="check1" type="checkbox" name="check" required value="check1">
-            <label for="check1"><p>Я согласен с политикой конфиденциальности и<br>
-                на обработку моих персональных данных</p></label>
-        </div>
+  <input id="check1" type="checkbox" name="check" required value="check1">
+  <label for="check1"></label>
+  <p>Я согласен с политикой конфиденциальности <br>и на обработку моих персональных данных</p>
+</div>
         <div class="button">
             <button type="submit"> Отправить </button>
         </div>
@@ -63,6 +66,9 @@
                 </div>
             </div>
         </div>
+<script src="{% static 'dvlink/js/jquery-3.7.0.min.js' %}"></script>
+<script src="{% static 'dvlink/js/phoneindex.js' %}"></script>
+<script src="{% static 'dvlink/js/emailindex.js' %}"></script>
 {% endblock %}
 
 
